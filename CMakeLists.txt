@@ -19,6 +19,8 @@ set(PROJECT_SOURCES
         mainwindow.ui
 )
 
+add_subdirectory(backend)
+
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(qt-booklibrary
         MANUAL_FINALIZATION
