@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-027fd8a9611b30480e7a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "backend",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "backend::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-backend-Debug-0cb5e9a3147c1cdcf16d.json",
+					"name" : "backend",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "backend_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-backend_autogen-Debug-0aa2a0d479bf39d3c343.json",
+					"name" : "backend_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "backend_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-backend_autogen_timestamp_deps-Debug-6dc9667843dc554f4854.json",
+					"name" : "backend_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/burak/OneDrive/Documents/qt-booklibrary/backend/build/Desktop_Qt_6_6_2_MSVC2019_64bit-Debug",
+		"source" : "C:/Users/burak/OneDrive/Documents/qt-booklibrary/backend"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
