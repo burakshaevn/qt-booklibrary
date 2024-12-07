@@ -1,37 +1,59 @@
-#ifndef LIBRARY_H
-#define LIBRARY_H
+#pragma once
+
+#include <QObject>
+#include <QWidget>
+#include <QMainWindow>
+#include <QVBoxLayout>
+#include <QStackedWidget>
+#include <QListWidget>
+#include <QMap>
+#include <QScrollArea>
+#include <QLabel>
+#include <QMessageBox>
+#include <QDockWidget>
+#include <QPushButton>
+
+#include <deque>
 
 #include "database_manager.h"
-#include <QString>
-#include <QVector>
-#include <QHash>
+#include "domain.h"
+#include "bookmarks.h"
+#include "cart.h"
 
-// Структура для хранения информации о книге
-struct Book {
-    int id;
-    QString title;
-    QString author;
-    double price;
-    QString published_date;
-    int genre_id;
-};
+class Library : public QMainWindow
+{
+    Q_OBJECT
 
-class Library {
 public:
-    explicit Library(DatabaseManager& dbManager);
+    explicit Library(QStackedWidget* stackedWidget, DatabaseManager& dbManager, QWidget* parent = nullptr);
 
-    // Загрузить данные из базы данных
+    QWidget* CreateLibraryPage();
+    void UpdateLibraryPage();
+
+    void SetBookmarks(Bookmarks* bookmarks);
+    void AddBookmark(const Book* book);
+    void RemoveBookmark(const Book* book);
+    QMap<const QString, const Book*> GetBookmarks();
+
+    void SetCart(Cart* cart);
+    void AddToCart(const Book* book);
+    void RemoveFromCart(const Book* book);
+    QMap<const QString, const Book*> GetCart();
+
     void LoadBooks();
+    std::deque<Book> GetBooks() const;
 
-    // Получить все книги
-    const QVector<Book>& GetBooks() const;
+    void DisplayBooks(const std::deque<Book>& books);
+    void DisplayBooks(QSqlQuery& query);
 
-    // Найти книгу по ID
-    const Book* FindBookById(int id) const;
+    QFrame* CreateItemFrame(const Book* book, const QVector<QPair<QString, std::function<void()>>>& buttons);
 
 private:
-    // DatabaseManager& dbManager_;   // Ссылка на менеджер базы данных
-    // QVector<Book> books_;          // Кэш загруженных книг
-    // QHash<int, int> bookIndexById_; // Индекс для быстрого поиска книг по ID
+    QStackedWidget* stackedWidget_;
+    DatabaseManager& db_manager_;
+    QVBoxLayout* libraryLayout_;
+
+    std::deque<Book> books_;
+    Bookmarks* bookmarks_;
+    Cart* cart_;
 };
-#endif // LIBRARY_H
